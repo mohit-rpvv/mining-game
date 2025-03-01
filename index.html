@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<style>
+    body *{
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+    }
+    #container-main {
+        width: 500px;
+        height: 500px;
+        border: 5px solid black;
+        margin: 0 auto;
+        background-color: rgb(138, 247, 247);
+    }
+    #box {
+        width: 470px;
+        height: 470px;
+        background-color: red;
+        margin: 15px;
+    }
+
+    .box-row {
+        width: 470px;
+        height: 94px;
+        background-color: green;
+    }
+    .box-item {
+        cursor: pointer;
+        float: left;
+        border: 2px solid black;
+        width: 90px;
+        height: 90px;
+        background-color: blue;
+        background-size: contain;  /* Ensures the whole image fits */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents tiling */
+    }
+    .box-item.unopened {
+        background-color: rgb(233, 153, 56);
+    }
+
+    .box-item.pass {
+        background-color: green;
+        background-image: url('./img/moneyIcon.png');
+    }
+    .box-item.fail {
+        background-image: url('./img/fialure.png');
+    }
+</style>
+<body>
+    <h1>welcome to the game</h1>
+    <div id="container-main">
+        <div id="container">
+            <div id="box">
+                <div class="box-row" data-val="0">
+                    <span class="box-item unopened" data-val="0"></span>
+                    <span class="box-item unopened" data-val="1"></span>
+                    <span class="box-item unopened" data-val="2"></span>
+                    <span class="box-item unopened" data-val="3"></span>
+                    <span class="box-item unopened" data-val="4"></span>
+                </div>
+                <div class="box-row" data-val="1">
+                    <span class="box-item unopened" data-val="0"></span>
+                    <span class="box-item unopened" data-val="1"></span>
+                    <span class="box-item unopened" data-val="2"></span>
+                    <span class="box-item unopened" data-val="3"></span>
+                    <span class="box-item unopened" data-val="4"></span>
+                </div>
+                <div class="box-row" data-val="2">
+                    <span class="box-item unopened" data-val="0"></span>
+                    <span class="box-item unopened" data-val="1"></span>
+                    <span class="box-item unopened" data-val="2"></span>
+                    <span class="box-item unopened" data-val="3"></span>
+                    <span class="box-item unopened" data-val="4"></span>
+                </div>
+                <div class="box-row" data-val="3">
+                    <span class="box-item unopened" data-val="0"></span>
+                    <span class="box-item unopened" data-val="1"></span>
+                    <span class="box-item unopened" data-val="2"></span>
+                    <span class="box-item unopened" data-val="3"></span>
+                    <span class="box-item unopened" data-val="4"></span>
+                </div>
+                <div class="box-row" data-val="4">
+                    <span class="box-item unopened" data-val="0"></span>
+                    <span class="box-item unopened" data-val="1"></span>
+                    <span class="box-item unopened" data-val="2"></span>
+                    <span class="box-item unopened" data-val="3"></span>
+                    <span class="box-item unopened" data-val="4"></span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+$(document).ready(function(){
+    let clickCount = 0;
+  $(".unopened").click(function(){
+    clickCount++;
+    $(this).removeClass("unopened");
+
+    if(clickCount == 4) {
+        $(this).addClass("fail");
+        $(".box-item").removeClass("unopened");
+    } else {
+        $(this).addClass("pass");
+    }
+  });
+});
+</script>
+</html>
